@@ -1,0 +1,24 @@
+/**
+**
+**  MAIN.CSS NOT LINKED
+**
+**/
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 279px;
+}
+
+main {
+    flex: 1 0 auto;
+}

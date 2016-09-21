@@ -1,0 +1,33 @@
+{
+  "name": "mean",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "materialize": "^0.97.6",
+    "angular-animate": "^1.5.5",
+    "angular-cookies": "^1.5.5",
+    "angular-resource": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-sanitize": "^1.5.5",
+    "angular-touch": "^1.5.5"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.5"
+  },
+  "appPath": "app",
+  "moduleName": "meanApp",
+  "overrides": {
+    "materialize": {
+      "main": [
+        "dist/css/materialize.css",
+        "dist/js/materialize.js"
+      ]
+    },
+    "ngToast": {
+      "main": [
+        "dist/ngToast.css",
+        "dist/ngToast.js"
+      ]
+    }
+  }
+}

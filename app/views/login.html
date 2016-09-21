@@ -1,0 +1,76 @@
+<div ng-include="nav"></div>
+<div class="container">
+    <div class="row">
+        <h3 class="col s6 center-align">
+            <span>Log in</span>
+        </h3>
+        <h3 class="col s6 center-align">
+            <span>Sign in</span>
+        </h3>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="card-content">
+                <form class="form-horizontal" ng-submit="login()">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="email" type="email" class="validate" ng-model="username" required>
+                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="password" type="password" class="validate" ng-model="password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="right-align col s12">
+                            <button type="submit" class="btn waves-effect waves-light green" ng-disabled="form.$invalid"
+                                    name="action">Log in
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="card-content">
+                <form class="form-horizontal" ng-submit="sign()">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="email_n" type="email" class="validate" ng-model="username_n" required>
+                            <label for="email_n" data-error="wrong" data-success="right">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="password_n" type="password" class="validate" ng-model="password_n" required>
+                            <label for="password_n">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="password_t" type="password" class="validate" ng-model="password_t" required>
+                            <label for="password_t">Confim password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="right-align col s12">
+                            <button type="submit" class="btn waves-effect waves-light green" ng-disabled="form.$invalid"
+                                    name="action">Sign in
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div ng-include="nav"></div>
+<div class="container">
+    <div class="row">
+        <!-- detail d'un article -->
+        <h1 class="page-header center-align">
+            <span>{{ article.title }}</span>
+        </h1>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/900x250.png" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p>Post <span class="orange-text">{{ article.create_at }}</span></p>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ article.content }}</p>
+                    </div>
+                    <div class="card-content">
+                        <p>By <span class="orange-text">{{ article.author }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="panel-title center-align" ng-if="comments[0] || is_auth">
+            <span>Comments</span>
+        </h4>
+        <!-- boucle sur les comments -->
+        <div class="row">
+            <div ng-repeat="comment in comments">
+                <div class="card col s6 offset-s3">
+                    <div class="card-content">
+                        <h5>{{ comment.title }}</h5>
+                        <p>Post {{ comment.create_at }}</p>
+                        <p>{{ comment.content }}</p>
+                        <p>By {{ comment.author }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- comment article -->
+        <div ng-if="is_auth == true">
+            <div class="card col s6 offset-s3">
+                <div class="card-content">
+                    <form class="form-horizontal" name="form" ng-submit="comment()" role="form">
+                        <div class="row">
+                            <div class="s12">
+                                <h5 class="card-title">Comment this article</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="title" type="text" ng-model="title">
+                                <label for="title">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="content" ng-model="content" class="materialize-textarea"></textarea>
+                                <label for="content">Comment</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="right-align col s12">
+                                <button type="submit" class="btn waves-effect waves-light green"
+                                        name="action">Post
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

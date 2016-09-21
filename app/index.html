@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blogger - Stack MEAN</title>
+    <meta name="description" content="Powerful blogging with MEAN Stack">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="styles/main.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16"/>
+</head>
+<body ng-app="meanApp">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- View -->
+<div ng-view=""></div>
+
+<!-- Footer -->
+<footer class="footer page-footer blue darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="center">
+                <h5 class="white-text">MEAN - Blogger</h5>
+                <p>Made by Garrea_s, Coulib_y, Balssa_v.
+                <p>Based on <a href="http://mean.io" class="waves-effect waves-light btn blue-grey">MEAN</a> stack.</p>
+                <p>And <a href="http://materializecss.com/"
+                          class="waves-effect waves-light btn blue-grey">Materialize</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue">
+        <div class="container">
+            © 2016 ETNA Projects
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/materialize/dist/js/materialize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/admin.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/article.js"></script>
+<script src="scripts/controllers/nav.js"></script>
+<script src="scripts/services/articles.js"></script>
+<script src="scripts/services/comments.js"></script>
+<script src="scripts/services/users.js"></script>
+<script src="scripts/services/API.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

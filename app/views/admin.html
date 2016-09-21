@@ -1,0 +1,276 @@
+<div ng-include="nav"></div>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1 class="page-header">
+                Panel Admin
+            </h1>
+
+            <div class="card">
+                <div class="card-content">
+                <span class="card-title"><i class="material-icons">perm_identity</i>
+                    Users
+                </span>
+                    <table class="striped">
+                        <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                            <th>Modify password</th>
+                            <th>Modify Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in users">
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.role }}</td>
+                            <td>
+                                <a class="btn-floating waves-effect waves-light blue" ng-click="modifyUser(user)"><i
+                                        class="material-icons">mode_edit</i></a>
+                            </td>
+                            <td>
+                                <a class="btn-floating waves-effect waves-light blue" ng-click="modifyRole(user)"><i
+                                        class="material-icons">perm_identity</i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                <span class="card-title"><i class="material-icons">description</i>
+                    Articles
+                </span>
+                    <table class="striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Content</th>
+                            <th>Creation date</th>
+                            <th>Modify</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="article in articles | orderBy: '-create_at'">
+                            <td>{{ article.title }}</td>
+                            <td>{{ article.author }}</td>
+                            <td>{{ article.content }}</td>
+                            <td>{{ article.create_at }}</td>
+                            <td><a class="btn-floating waves-effect waves-light blue"><i
+                                    class="material-icons" ng-click="modifyArticle(article)">mode_edit</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red"
+                                   ng-click="modalDeleteArticle(article)"><i
+                                    class="material-icons">delete</i></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                <span class="card-title"><i class="material-icons">textsms</i>
+                    Comments
+                </span>
+                    <table class="striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Content</th>
+                            <th>Creation date</th>
+                            <th>Modify</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="comment in comments | orderBy: '-create_at'">
+                            <td>{{ comment.title }}</td>
+                            <td>{{ comment.author }}</td>
+                            <td>{{ comment.content }}</td>
+                            <td>{{ comment.create_at }}</td>
+                            <td><a class="btn-floating waves-effect waves-light blue"><i
+                                    class="material-icons" ng-click="modifyCommentary(comment)">mode_edit</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red"><i
+                                    class="material-icons" ng-click="modalDeleteComment(comment)">delete</i></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="left"
+               data-delay="50"
+               data-tooltip="Create article !" ng-click="newArticleModal()">
+                <i class="large material-icons">mode_edit</i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modal1">
+    <div class="modal-content">
+        <form class="col s12" ng-submit="submitPassword(user)">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="password" type="text" class="validate" ng-model="password">
+                    <label for="password">New password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="right-align col s12">
+                    <button type="submit" class="btn waves-effect waves-light green"
+                            name="action">Modify password
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal2">
+    <div class="modal-content">
+        <form class="col s12" ng-submit="submitRole(user)">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select title="role" ng-model="role">
+                        <option value="" disabled selected>Choose new role</option>
+                        <option ng-value='roles.admin'>admin</option>
+                        <option ng-value='roles.normal'>normal</option>
+                    </select>
+                    <label>Role :</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="right-align col s12">
+                    <button type="submit" class="btn waves-effect waves-light green"
+                            name="action">Modify Role
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal3">
+    <div class="modal-content">
+        <form class="col s12" ng-submit="submitArticle(article)">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="title" type="text" class="validate" ng-model="title" ng-value="article.title">
+                    <label class="active" for="title">New title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <textarea id="content" class="materialize-textarea" ng-model="content"></textarea>
+                    <label class="active" for="content">New content</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="right-align col s12">
+                    <button type="submit" class="btn waves-effect waves-light green"
+                            name="action">Modify article
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal4">
+    <div class="row">
+        <i class="material-icons prefix center-block">warning</i>
+        <span>Do you really wish to delete {{article.title}} ?</span>
+    </div>
+    <div class="modal-content">
+        <form class="col s12" ng-submit="deleteArticle(article)">
+            <div class="right-align col s12">
+                <button type="submit" class="btn waves-effect waves-light red"
+                        name="action">Delete article
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal5">
+    <div class="modal-content">
+        <form class="col s12" ng-submit="submitCommentary(commentary)">
+            <div class="row">
+                <div class="input-field col s6">
+                    <textarea id="commentContent" class="materialize-textarea" ng-model="content"></textarea>
+                    <label class="active" for="content">New content</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="right-align col s12">
+                    <button type="submit" class="btn waves-effect waves-light green"
+                            name="action">Modify the comment
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal6">
+    <div class="row">
+        <i class="material-icons prefix center-block">warning</i>
+        <span>Do you really wish to delete {{commentary.title}} ?</span>
+    </div>
+    <div class="modal-content">
+        <form class="col s12" ng-submit="deleteCommentary(commentary)">
+            <div class="right-align col s12">
+                <button type="submit" class="btn waves-effect waves-light red"
+                        name="action">Delete comment
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal7">
+    <div class="modal-content">
+        <form class="col s12" ng-submit="newArticle()">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="newTitle" type="text" class="validate" ng-model="title">
+                    <label class="active" for="newTitle">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <textarea id="newContent" class="materialize-textarea" ng-model="content"></textarea>
+                    <label class="active" for="newContent">content</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="right-align col s12">
+                    <button type="submit" class="btn waves-effect waves-light green"
+                            name="action">New article
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+    })
+</script>
